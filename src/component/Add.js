@@ -13,12 +13,12 @@ export default function Addstud() {
         "contact":""
     })
     
-    //onchange function
+ 
     const setstud=(e)=>{
         console.log(e.target.value);
         setInputdata({ ...inputdata, [e.target.name]: e.target.value });   
     }
-    //onclick event
+
     const addinpdata = async (e) => {
         e.preventDefault();
 
