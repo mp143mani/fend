@@ -84,8 +84,8 @@ export default function Edit() {
     }
 
     return (
-        <div className='container mt-5'>
-            <h4>Edit Student Information</h4>
+        <div className='container mt-4'>
+            <h4>Edit Student Data</h4>
             <div className='underline1'></div>
             <form className='mt-5 shadow p-5 w-75'>
                 <div className="mb-3">
