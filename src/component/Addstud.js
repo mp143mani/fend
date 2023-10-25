@@ -60,9 +60,9 @@ export default function Addstud() {
     }
     return (
         <div className='container mt-5'>
-            <h4>All New Student Information</h4>
-            <div className='underline1'></div>
-            <form className='mt-5 shadow p-5 w-75'>
+            <h4 className='text-center'>Add New Student Information</h4>
+            
+            <form className='mt-5  p-5   align-items-center'>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1" className="form-label">Student Name</label>
                     <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter Student Name" 
