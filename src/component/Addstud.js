@@ -24,7 +24,7 @@ export default function Addstud() {
 
         const { name, address, subject, contact } = inputdata;
 
-        const res = await fetch("http://localhost:5000/addstud", {
+        const res = await fetch("https://bend-stna.onrender.com/addstud", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
