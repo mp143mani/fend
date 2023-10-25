@@ -3,7 +3,7 @@ import Allstud from "./component/All";
 import Navbar from "./component/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Config from "./component/Config";
-import Addstud from "./component/Addstud";
+import Addstud from "./component/Add";
 import Edit from "./component/Edit";
 
 function App() {

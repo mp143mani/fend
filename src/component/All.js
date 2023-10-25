@@ -29,12 +29,15 @@ export default function Allstud() {
 
   //Delete student data
   const deletestud = async (id) => {
-    const res2 = await fetch(`https://bend-stna.onrender.com/deletestud/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res2 = await fetch(
+      `https://bend-stna.onrender.com/deletestud/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const deletedata = await res2.json();
 
@@ -64,7 +67,7 @@ export default function Allstud() {
           onChange={(e) => searchStud(e.target.value)}
         />
       </div>
-      <table className="table table-bordered mt-5">
+      <table className="table table-bordered mt-5 w-75">
         <thead>
           <tr className="table-secondary">
             <th scope="col">No</th>
@@ -106,7 +109,7 @@ export default function Allstud() {
                         className="btn btn-warning ms-2"
                         to={`/edit/${result._id}`}
                       >
-                       Edit
+                        Edit
                       </Link>
                       <button
                         className="btn btn-danger ms-2"

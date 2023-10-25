@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
-export default function Edit() {
+export default function Addstud() {
   const navigate = useNavigate();
-
   const [inputdata, setInputdata] = useState({
     name: "",
     address: "",
@@ -17,81 +16,54 @@ export default function Edit() {
   //onchange function
   const setstud = (e) => {
     console.log(e.target.value);
-    const { name, value } = e.target;
-    setInputdata((prestud) => {
-      return {
-        ...prestud,
-        [name]: value,
-      };
-    });
+    setInputdata({ ...inputdata, [e.target.name]: e.target.value });
   };
-
-  //get single data student
-  const { id } = useParams("");
-  console.log(id);
-
-  const getstuddata = async () => {
-    const res = await fetch(`https://bend-stna.onrender.com/getstud/${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-
-    if (res.status === 422 || !data) {
-      console.log("error ");
-    } else {
-      setInputdata(data);
-      console.log("get data");
-    }
-  };
-
-  useEffect(() => {
-    getstuddata();
-  }, []);
-
-  //update student Data
-  const updatestud = async (e) => {
+  //onclick event
+  const addinpdata = async (e) => {
     e.preventDefault();
 
     const { name, address, subject, contact } = inputdata;
-    const res2 = await fetch(
-      `https://bend-stna.onrender.com/updatestud/${id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          address,
-          subject,
-          contact,
-        }),
-      }
-    );
-    const data2 = await res2.json();
-    setInputdata(data2);
-    toast.success("Please wait  !", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-    setTimeout(() => {
-      navigate("/allstud");
-    }, 3000);
-  };
 
+    const res = await fetch("https://bend-stna.onrender.com/addstud", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        address,
+        subject,
+        contact,
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (res.status === 422 || !data) {
+      console.log("error ");
+      alert("error");
+    } else {
+      setInputdata(data);
+      toast.success("Please wait  !", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setTimeout(() => {
+        navigate("/allstud");
+      }, 3000);
+    }
+  };
   return (
     <div className="container mt-5">
-      <h4>Edit Student Information</h4>
-      <div className="underline1"></div>
-      <form className="mt-5 shadow p-5 w-75">
+      <h4 className="text-center">Add New Student Information</h4>
+
+      <form className="mt-5  p-5   align-items-center">
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
             Student Name
@@ -149,8 +121,8 @@ export default function Edit() {
           />
         </div>
         <div className="d-flex">
-          <button className="btn btn-primary" onClick={updatestud}>
-            update Student
+          <button className="btn btn-primary" onClick={addinpdata}>
+            Add Student
           </button>
           <ToastContainer />
           <NavLink className="btn btn-primary ms-auto" to="/allstud">
