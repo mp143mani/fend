@@ -31,7 +31,7 @@ export default function Edit() {
     console.log(id);
 
     const getstuddata = async () => {
-        const res = await fetch(`http://localhost:5000/getstud/${id}`, {
+        const res = await fetch(`https://bend-stna.onrender.com/getstud/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
