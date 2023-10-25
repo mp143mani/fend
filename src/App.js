@@ -1,9 +1,9 @@
 import "./App.css";
-import Allstud from "./component/Allstud";
+import Allstud from "./component/All";
 import Navbar from "./component/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import View from "./component/View";
-import Addstud from "./component/Addstud";
+import View from "./component/config";
+import Addstud from "./component/Add";
 import Edit from "./component/Edit";
 
 function App() {
